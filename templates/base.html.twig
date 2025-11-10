@@ -11,9 +11,17 @@
         {% endblock %}
     </head>
     <body>
-    <a href="/">Home</a>
-    <a href="/login">Iniciar Sesión</a>
-    <a href="/register">Registrarse</a>
-        {% block body %}{% endblock %}
+    {% if app.user %}
+        <div class="mb-3">
+            Estás loggeado como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Cerrar Sesión</a>
+        </div>
+    {% else %}
+        <div class="mb-3">
+            <a href="{{ path('app_login') }}">Iniciar Sesión</a>
+            <a href="{{ path('app_register') }}">Registrarse</a>
+        </div>
+    {% endif %}
+        {% block body %}
+        {% endblock %}
     </body>
 </html>

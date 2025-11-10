@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Comentario{% endblock %}
+
+{% block body %}
+    <h1>Crea un nuevo comentario</h1>
+
+    {{ include('comment/_form.html.twig') }}
+    
+    <a href="{{ path('app_post_show', {'id': comment.post.id}) }}">Volver</a>
+{% endblock %}
